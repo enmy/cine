@@ -12,13 +12,6 @@
     <link rel="stylesheet" type="text/css" href="/cine/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/cine/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/cine/css/index.css" />
-    
-    <style>
-        div input
-        {
-            color:black;
-        }
-    </style>
 </head>
     
 <body background="/cine/img/wallpaper.jpg">
@@ -49,7 +42,28 @@
         </div>
         <!-- FIN DE ENCABEZADO -->
         
+        <!-- Start WOWSlider.com BODY section -->
+        <div id="wowslider-container1">
+            <div class="ws_images"><ul>
+                <li><img src="/cine/img/Pelo-malo.jpg" alt="hola" title="Pelo Malo" id="wows1_0" width="960" height="360"/></li>
+                <li><img src="/cine/WOWSlider/data1/images/big_15.jpg" alt="big (15)" title="big (15)" id="wows1_1"/></li>
+                <li><img src="/cine/WOWSlider/data1/images/big_16.jpg" alt="big (16)" title="big (16)" id="wows1_2"/></li>
+                </ul></div>
+        <div class="ws_thumbs">
+            <div>
+            <a href="#" title="chao"><img src="/cine/img/Pelo-malo.jpg" alt="" width="128" height="48"/></a>
+            <a href="#" title="big (15)"><img src="/cine/WOWSlider/data1/tooltips/big_15.jpg" alt="" /></a>
+            <a href="#" title="big (16)"><img src="/cine/WOWSlider/data1/tooltips/big_16.jpg" alt="" /></a>
+                
+            </div>
+        </div>
+            <div class="ws_shadow"></div>
+            </div>
+            <script type="text/javascript" src="/cine/WOWSlider/engine1/wowslider.js"></script>
+            <script type="text/javascript" src="/cine/WOWSlider/engine1/script.js"></script>
+            <!-- End WOWSlider.com BODY section -->
         
+        <br /><br /><br />
         
         <?php #IMAGEN PARA SLIDER
             /*# conexión a la base de datos
@@ -70,7 +84,7 @@
             mysqli_close ( $conexion_bd );*/
         ?>
         
-        <br />
+        <br /><br /><br />
         
         <!-- BARRA DE NAVEGACION -->
         <div class="row" id="barranav" style="width:100%;" >
@@ -85,45 +99,43 @@
         
         <br />
         
-        
-        
-        
-        <!-- FORMULARIO INICIO DE SESION -->
-        <div role="content" style="background-color:gray; color:white; width:50%; padding:30px;" >
-        <form name="inicio_sesion_post_frm" action="control.php?sesion=inicio" method="post" enctype="application/x-www-form-urlencoded">
-            <?php
-                error_reporting(E_ALL ^ E_NOTICE);
-                if($_GET["error"]=="si")
+        <!-- CINES -->
+        <div>
+            <div>
+                
+        <?php #CARTELERA
+            # conexión a la base de datos
+            require('conectar-bd.php');
+            
+            $query = "SELECT DISTINCT ciudad FROM sucursal ORDER BY ciudad ASC";
+
+            if ($resultado = mysqli_query($conexion_bd, $query))
+            {
+                #resulto bien
+                while ($fila=mysqli_fetch_row($resultado))
                 {
-                    echo '<h4 style="color:red;" >Verificar datos</h4>';
-                }else
-                {
-                    echo "<h4>Introduce tus datos</h4>";
+                    echo '<div class="row" id="barratitulo" style="width:100%;" ><h1>'.$fila[0].'</h1></div>';
+                    
+                    $query2 = "SELECT direccion FROM sucursal WHERE ciudad = \"".$fila[0]."\"";
+                    if ($resultado2 = mysqli_query($conexion_bd, $query2))
+                    {
+                        while ($fila2 = mysqli_fetch_row($resultado2))
+                        {
+                            echo '<div class="row contenido" style="width:100%;" ><h4>'.$fila2[0].'</h4></div>';
+                        }
+                        mysqli_free_result($resultado2);
+                    }
                 }
-            ?>
-            
-            
-            
-            <div class="row" style="width:100%;" >
-                <div class="col-md-6" style="text-align:right;" >C&eacute;dula de identidad:</div>
-                <div class="col-md-6" style="text-align:left;" ><input type="number" name="cedula_num" /></div>
+                mysqli_free_result($resultado);
+            }
+            mysqli_close ( $conexion_bd );
+        ?>
+                
+                <div class="row" id="barratitulo" style="width:100%;" ><h1>ciudad</h1></div>
+                <div class="row contenido" style="width:100%;" ><h3>cine</h3><br /><br /><br /><br /><br /></div>
             </div>
-            
-            <br />
-            
-            <div class="row" style="width:100%;" >
-                <div class="col-md-6" style="text-align:right;" >Contrase&ntilde;a:</div>
-                <div class="col-md-6" style="text-align:left;" ><input type="password" name="contrasena_txt" /></div>
-            </div>
-            
-            <br />
-            
-            <input type="submit" id="iniciar_btn" name="iniciar_btn" value="Iniciar" onclick="validarDatos()" style="color:black" />
-        </form>
         </div>
-        <!-- FIN FORMULARIO INICIO SESION -->
-        
-        
+        <!-- CINES -->
         
         
         
@@ -136,36 +148,3 @@
     
 </body>
 </html>
-
-
-
-
-
-<script>
-    function validarDatos()
-    {/*
-        var verificar = true;
-        
-        if(!document.inicio_sesion_post_frm.cedula_num.value)
-        {
-            alert("Cedula de identidad requerida");
-            document.inicio_sesion_post_frm.cedula_num.focus();
-            verificar = false;
-        } else if(!document.inicio_sesion_post_frm.contrasena_txt.value)
-        {
-            alert("Contrasena requerida");
-            document.inicio_sesion_post_frm.contrasena_txt.focus();
-            verificar = false;
-        }
-        
-        if(verificar)
-            document.inicio_sesion_post_frm.submit();*/
-    }
-    
-    
-</script>
-
-
-
-<?php
-?>

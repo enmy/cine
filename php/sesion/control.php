@@ -27,8 +27,8 @@
                 
                 mysqli_free_result($resultado);
                 
-                header("Location: archivo-protegido.php");
-            }
+                header("Location: /cine");
+            } else header("Location: inicio-sesion.php?error=si");
         } else header("Location: inicio-sesion.php?error=si");
     
     

@@ -103,7 +103,7 @@
         <div>
             <div>
                 
-        <?php #IMAGEN PARA SLIDER
+        <?php #CINES
             # conexión a la base de datos
             require('conectar-bd.php');
             
@@ -131,8 +131,6 @@
             mysqli_close ( $conexion_bd );
         ?>
                 
-                <div class="row" id="barratitulo" style="width:100%;" ><h1>ciudad</h1></div>
-                <div class="row contenido" style="width:100%;" ><h3>cine</h3><br /><br /><br /><br /><br /></div>
             </div>
         </div>
         <!-- CINES -->
