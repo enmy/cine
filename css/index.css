@@ -15,3 +15,21 @@
     font-size:large;
     margin-top:-6px;
 }
+#barratitulo
+{
+    color:#fff;
+    background-color:gray;
+}
+#barratitulo h1
+{
+    margin:10px 0;
+}
+.contenido
+{
+    color:gray;
+    background-color:#EBEBEB;
+}
+.contenido h4
+{
+    margin:10px 0;
+}

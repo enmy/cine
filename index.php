@@ -9,9 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="WOWSlider/engine1/style.css" />
 	<script type="text/javascript" src="WOWSlider/engine1/jquery.js"></script>
 	<!-- End WOWSlider.com HEAD section -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/cine/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/cine/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="/cine/css/index.css" />
 </head>
     
 <body background="img/wallpaper.jpg">
@@ -54,6 +54,7 @@
             <a href="#" title="chao"><img src="img/Pelo-malo.jpg" alt="" width="128" height="48"/></a>
             <a href="#" title="big (15)"><img src="WOWSlider/data1/tooltips/big_15.jpg" alt="" /></a>
             <a href="#" title="big (16)"><img src="WOWSlider/data1/tooltips/big_16.jpg" alt="" /></a>
+                
             </div>
         </div>
             <div class="ws_shadow"></div>
@@ -62,12 +63,34 @@
             <script type="text/javascript" src="WOWSlider/engine1/script.js"></script>
             <!-- End WOWSlider.com BODY section -->
         
-<br /><br /><br />
+        <br /><br /><br />
+        
+        <?php #IMAGEN PARA SLIDER
+            /*# conexión a la base de datos
+            require('php/conectar-bd.php');
+            
+            $query = "SELECT imagen_portada FROM portadas WHERE id_pelicula = 1";
+
+            if ($resultado = mysqli_query($conexion_bd, $query))
+            {
+                #resulto bien
+                if ($fila = mysqli_fetch_row($resultado))
+                {
+                    header("Content-Type: image/jpeg");
+                    echo $fila[0];
+                    mysqli_free_result($resultado);
+                }
+            }
+            mysqli_close ( $conexion_bd );*/
+        ?>
+        
+        <br /><br /><br />
+        
         <!-- BARRA DE NAVEGACION -->
         <div class="row" id="barranav" style="width:100%;" >
           <a href="#"><div class="col-md-2" style="border-left-style:none">Inicio</div></a>
           <a href="#"><div class="col-md-2">Cartelera</div></a>
-          <a href="#"><div class="col-md-2">Cines</div></a>
+          <a href="php/cines.php"><div class="col-md-2">Cines</div></a>
           <a href="#"><div class="col-md-2">Próximamente</div></a>
           <a href="#"><div class="col-md-2">Precios</div></a>
           <a href="#"><div class="col-md-2">Acerca de</div></a>

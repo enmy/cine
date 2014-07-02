@@ -6,7 +6,7 @@
     DEFINE ('DB_HOST', 'localhost');
     DEFINE ('DB_USER', 'root');
     DEFINE ('DB_PASSWORD', '');
-    DEFINE ('DB_NAME', 'cine');
+    DEFINE ('DB_NAME', 'cineucab');
     
     # Realizamos la conexi�n a la base de datos
    /*$conexion = mysql_connect(DB_HOST, DB_HOST, DB_PASSWORD) or die 
